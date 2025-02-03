@@ -1,7 +1,7 @@
 import { useState } from "react"
 import AppStart from "./components/layout/AppStart"
 
-function App(props:Props) {
+function App() {
 
   const [isAppIitiated, setIsAppIitiated] = useState(false)
 
