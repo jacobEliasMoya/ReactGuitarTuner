@@ -9,7 +9,7 @@ interface GradientStarts {
 function App() {
 
   const [isAppIitiated, setIsAppIitiated] = useState(false);
-  const [gradientStarts, setGradientStarts] = useState<GradientStarts>({start:0, end:10});
+  const [gradientStarts, setGradientStarts] = useState<GradientStarts>({start:0, end:0});
 
   const handleClick = () => {
     setIsAppIitiated(true);
@@ -34,11 +34,10 @@ function App() {
 
   return (
     <main className='transition-all ease min-h-screen flex flex-col items-center justify-center overflow-hidden'
-
-    style={{
-      background: `radial-gradient(circle at center, #111 ${gradientStarts.start}% ${gradientStarts.end}% , #000 ${gradientStarts.end + 70}% )`,
-    }}>
-
+      style={{
+        background: `linear-gradient(180deg, #080808 ${gradientStarts.start}% , #000 )`,
+      }}
+    >
       <AppStart onclick={handleClick} additionalClasses={!isAppIitiated ? 'animate-drop-n-rotate' : 'animate-drop-n-rotate-reverse'}/>
 
     </main>

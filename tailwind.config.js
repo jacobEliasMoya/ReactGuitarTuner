@@ -34,7 +34,7 @@ export default {
           },
 
           '100%': { 
-            transform: 'rotate(-135deg) translateY(150%) translateX(150%) ',
+            transform: 'rotate(-135deg) translateY(-150%) translateX(-150%) ',
             boxShadow: '0em 0em 0em 0em #00000026' 
            },
         },
