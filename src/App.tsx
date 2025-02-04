@@ -20,8 +20,7 @@ function App() {
       setGradientStarts((prev) => { 
         if(prev.start >= 100) {
           clearInterval(x);
-          return prev;
-          
+          return prev
         } else {
           return {...prev, start: prev.start + 1, end: prev.end + 1}
         }
@@ -30,19 +29,18 @@ function App() {
   }
 
   useEffect(() => {
-    
     isAppIitiated ? handleGradient() : null;
-
   },[isAppIitiated])
 
   return (
     <main className='transition-all ease min-h-screen flex flex-col items-center justify-center overflow-hidden'
 
-      style={{
-        background: `radial-gradient(circle at center, #111 ${gradientStarts.start}% ${gradientStarts.end}% , #000 ${gradientStarts.end + 20}% )`,
-      }}
-    >  
-      {isAppIitiated ? '' : <AppStart onclick={handleClick} additionalClasses={``}/>  } 
+    style={{
+      background: `radial-gradient(circle at center, #111 ${gradientStarts.start}% ${gradientStarts.end}% , #000 ${gradientStarts.end + 70}% )`,
+    }}>
+
+      <AppStart onclick={handleClick} additionalClasses={!isAppIitiated ? 'animate-drop-n-rotate' : 'animate-drop-n-rotate-reverse'}/>
+
     </main>
   )
 }
