@@ -1,21 +1,47 @@
 import { useEffect, useState } from "react"
 import AppStart from "./components/layout/AppStart"
 
+interface GradientStarts {
+  start: number;
+  end: number;
+}
+
 function App() {
 
-  const [isAppIitiated, setIsAppIitiated] = useState(false)
-
+  const [isAppIitiated, setIsAppIitiated] = useState(false);
+  const [gradientStarts, setGradientStarts] = useState<GradientStarts>({start:0, end:10});
 
   const handleClick = () => {
     setIsAppIitiated(true);
   }
 
+  const handleGradient = () => {
+    let x:number = setInterval(()=> {
+      setGradientStarts((prev) => { 
+        if(prev.start >= 100) {
+          clearInterval(x);
+          return prev;
+          
+        } else {
+          return {...prev, start: prev.start + 1, end: prev.end + 1}
+        }
+      })
+    },1)
+  }
+
   useEffect(() => {
-    console.log(isAppIitiated)
+    
+    isAppIitiated ? handleGradient() : null;
+
   },[isAppIitiated])
 
   return (
-    <main className='bg-gradient-to-br from-zinc-800 to-zinc-950  min-h-screen flex flex-col items-center justify-center overflow-hidden'>  
+    <main className='transition-all ease min-h-screen flex flex-col items-center justify-center overflow-hidden'
+
+      style={{
+        background: `radial-gradient(circle at center, #111 ${gradientStarts.start}% ${gradientStarts.end}% , #000 ${gradientStarts.end + 20}% )`,
+      }}
+    >  
       {isAppIitiated ? '' : <AppStart onclick={handleClick} additionalClasses={``}/>  } 
     </main>
   )
