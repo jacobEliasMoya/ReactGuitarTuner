@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import AppStart from "./components/layout/AppStart"
+import WhatsTuning from "./components/layout/WhatsTuning";
+import leather from './assets/leather.webp';
 
 interface GradientStarts {
   start: number;
@@ -33,13 +35,14 @@ function App() {
   },[isAppIitiated])
 
   return (
-    <main className='transition-all ease min-h-screen flex flex-col items-center justify-center overflow-hidden'
+    <main className='transition-all ease min-h-screen flex flex-col items-center justify-center overflow-hidden bg-auto bg-repeat'
       style={{
-        background: `linear-gradient(180deg, #080808 ${gradientStarts.start}% , #000 )`,
+        backgroundImage: `url(${leather}), linear-gradient(180deg, #000000 ${gradientStarts.start}% , #111 )`,
       }}
     >
       <AppStart onclick={handleClick} additionalClasses={!isAppIitiated ? 'animate-drop-n-rotate' : 'animate-drop-n-rotate-reverse'}/>
-
+      
+      {isAppIitiated ? <WhatsTuning/> : null}
     </main>
   )
 }

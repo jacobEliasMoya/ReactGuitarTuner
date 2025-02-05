@@ -1,6 +1,6 @@
 import H1 from '../headers/H1'
 import MainButton from '../buttons/MainButton'
-import { PiGuitarFill, PiGuitarLight } from 'react-icons/pi'
+import { PiGuitarLight } from 'react-icons/pi'
 
 type Props = {
     additionalClasses:string | undefined,

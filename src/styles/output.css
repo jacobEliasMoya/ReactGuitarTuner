@@ -570,6 +570,10 @@ video {
   display: flex;
 }
 
+.grid {
+  display: grid;
+}
+
 .h-64 {
   height: 16rem;
 }
@@ -578,8 +582,16 @@ video {
   min-height: 100vh;
 }
 
+.w-2\/3 {
+  width: 66.666667%;
+}
+
 .w-64 {
   width: 16rem;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .min-w-10 {
@@ -676,8 +688,26 @@ video {
   background-color: rgb(220 38 38 / var(--tw-bg-opacity, 1));
 }
 
+.bg-auto {
+  background-size: auto;
+}
+
+.bg-repeat {
+  background-repeat: repeat;
+}
+
 .p-3 {
   padding: 0.75rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .text-center {
@@ -706,6 +736,11 @@ video {
   font-weight: 700;
 }
 
+.\!text-white {
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important;
+}
+
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
@@ -724,14 +759,6 @@ video {
 
 .will-change-transform {
   will-change: transform;
-}
-
-.\[background-image\:linear-gradient\(45deg\2c \#\#ffdfdf\%_50\%\2c white_50\%_100\%\)\] {
-  background-image: linear-gradient(45deg,##ffdfdf% 50%,white 50% 100%);
-}
-
-.\[background-image\:linear-gradient\(45deg\2c \#e3e3e3_0\%_50\%\2c white_50\%_100\%\)\] {
-  background-image: linear-gradient(45deg,#e3e3e3 0% 50%,white 50% 100%);
 }
 
 .\[background-image\:linear-gradient\(45deg\2c \#ffdfdf_0\%_50\%\2c white_50\%_100\%\)\] {
