@@ -4,7 +4,7 @@ import H3 from "../headers/H3"
 import H4 from "../headers/H4"
 import guitar6 from '../../assets/guitar.webp'
 import guitar7 from '../../assets/7-string.webp'
-import guitar12 from '../../assets/12 string.webp'
+import guitar12 from '../../assets/12-string.webp'
 import ukulele from '../../assets/ukulele.webp'
 import bass4 from '../../assets/bass4.webp'
 import bass5 from '../../assets/bass5.webp'
