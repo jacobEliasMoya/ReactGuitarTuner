@@ -35,7 +35,7 @@ function App() {
   },[isAppIitiated])
 
   return (
-    <main className='transition-all ease min-h-screen flex flex-col items-center justify-center overflow-hidden bg-auto bg-repeat'
+    <main className='transition-all ease min-h-screen flex flex-col items-center justify-start overflow-hidden bg-auto bg-repeat'
       style={{
         backgroundImage: `url(${leather}), linear-gradient(180deg, #000000 ${gradientStarts.start}% , #111 )`,
       }}

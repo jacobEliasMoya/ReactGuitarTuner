@@ -17,24 +17,24 @@ export default {
       keyframes: {
         dropnrotate: {
           '0%': { 
-            transform: 'rotate(-135deg) translateY(150%) translateX(150%) ',
+            transform: 'rotate(-135deg) translateY(150vh) translateX(150vh) ',
             boxShadow: '-25em -25em 1em -4em #00000026' 
 
           },
 
           '100%': { 
-            transform: 'rotate(-135deg) translateY(0%) translateX(0%)',
+            transform: 'rotate(-135deg) translateY(0vh) translateX(0vh)',
             boxShadow: '0em 0em 0em 0em #00000026' 
            },
         },
         dropnrotaterev: {
           '0%': { 
-            transform: 'rotate(-135deg) translateY(0%) translateX(0%)',
+            transform: 'rotate(-135deg) translateY(0vh) translateX(0vh)',
             boxShadow: '0em 0em 0em 0em #00000026' 
           },
 
           '100%': { 
-            transform: 'rotate(-135deg) translateY(-150%) translateX(-150%) ',
+            transform: 'rotate(-135deg) translateY(-150vh) translateX(-150vh) ',
             boxShadow: '0em 0em 0em 0em #00000026' 
            },
         },

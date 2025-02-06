@@ -9,7 +9,7 @@ type Props = {
 
 const MainButton = (props: Props) => {
   return (
-    <button className={`active:scale-95 min-w-10 rounded-lg text-lg md:text-2xl p-3 md:p-3 font-main hover:bg-red-700 md:px-8  text-white font-bold bg-red-600 ${props.additionalClasses}`}  onClick={props.onclick}> {props.textIcon} {props.buttonText} </button>
+    <button className={`active:scale-95 min-w-10 rounded-lg text-lg md:text-2xl p-3 md:p-3 font-main hover:bg-emerald-800 md:px-8  text-white font-bold bg-emerald-700 ${props.additionalClasses}`}  onClick={props.onclick}> {props.textIcon} {props.buttonText} </button>
   )
 }
 
