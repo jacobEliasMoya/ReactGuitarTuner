@@ -16,6 +16,7 @@ import mandolin from '../../assets/mandolin.webp'
 import balalaika from '../../assets/balalaika.webp' 
 import banjo4 from '../../assets/banjo4.webp' 
 import banjo5 from '../../assets/banjo5.webp' 
+import H1 from "../headers/H1"
 
 
 interface WhatsTuningProps {
@@ -120,9 +121,9 @@ const WhatsTuning = () => {
   },[])    
 
   return (
-    <section className='w-full text-white p-8 md:p-16 text-center'>
-        <H2 additionalClasses={'!text-white'} headerText={`What are you `} textIcon={undefined}/>
-        <H3 additionalClasses={'!text-emerald-500'} headerText={` tuning today`} textIcon={undefined}/>
+    <section className='w-full text-white p-8 md:p-10 lg:p-16 text-center'>
+        <H1 additionalClasses={'!text-white'} headerText={`What are you `} textIcon={undefined}/>
+        <H2 additionalClasses={'!text-emerald-500'} headerText={` tuning today`} textIcon={undefined}/>
 
         <div className="w-full mx-auto md: md:w-11/12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mt-8 ">
           {tuningSelection?.map((item)=>(
