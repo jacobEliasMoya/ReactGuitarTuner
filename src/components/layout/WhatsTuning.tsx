@@ -70,7 +70,7 @@ const WhatsTuning = () => {
     {
       key: 7,
       image: violin,
-      title: 'Vionlin/Fiddle',
+      title: 'Vionlin/ Fiddle',
       description: ''
     },
     {
@@ -124,10 +124,10 @@ const WhatsTuning = () => {
         <H2 additionalClasses={'!text-white'} headerText={`What are you `} textIcon={undefined}/>
         <H3 additionalClasses={'!text-emerald-500'} headerText={` tuning today`} textIcon={undefined}/>
 
-        <div className="w-full mx-auto md:w-10/12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mt-8 ">
+        <div className="w-full mx-auto md: md:w-11/12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mt-8 ">
           {tuningSelection?.map((item)=>(
-          <div key={item.key} className="cursor-pointer w-full col bg-zinc-900 rounded-xl py-8 px-4 flex items-center justify-center flex-col gap-2 md:gap-4   transition-all border-2 bg-opacity-50 border-zinc-900 hover:border-emerald-400  active:border-emerald-300 after:absolute after:w-full after:h-full after:bg-white after:bg-opacity-0 after:backdrop-blur-sm relative after:-z-[2] z-0 overflow-hidden">
-              <div className="w-20 h-20 md:w-32 md:h-32 lg:w-36 lg:h-36  rounded-full bg-cover bg-center mb-2 md:mb-0"
+          <div key={item.key} className="cursor-pointer w-full col bg-zinc-900 rounded-xl py-8 px-4 flex items-center justify-start flex-col gap-2 md:gap-3   transition-all border-2 bg-opacity-50 border-zinc-900 hover:border-emerald-400  active:border-emerald-300 after:absolute after:w-full after:h-full after:bg-white after:bg-opacity-0 after:backdrop-blur-sm relative after:-z-[2] z-0 overflow-hidden">
+              <div className="w-20 h-20 md:w-32 md:h-32 lg:w-40 lg:h-40  rounded-full bg-cover bg-center mb-3 "
                 style={{
                   backgroundImage:`url(${item.image})`
                 }}

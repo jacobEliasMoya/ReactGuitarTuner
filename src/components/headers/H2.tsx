@@ -8,7 +8,7 @@ type Props = {
 
 const H2 = (props: Props) => {
   return (
-    <h2 className={`capitalize text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-800 font-main ${props.additionalClasses}`}>  {props.headerText} {props.textIcon}</h2>
+    <h2 className={`capitalize text-2xl sm:text-2xl md:text-3xl lg:text-5xl font-bold text-zinc-800 font-main ${props.additionalClasses}`}>  {props.headerText} {props.textIcon}</h2>
 )
 }
 
