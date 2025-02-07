@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import AppStart from "./components/layout/AppStart"
-import WhatsTuning from "./components/layout/WhatsTuning";
+import WhatsTuning from "./features/instrument/WhatsTuning";
 import leather from './assets/leather.webp';
 
 interface GradientStarts {
