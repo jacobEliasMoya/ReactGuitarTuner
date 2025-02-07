@@ -17,6 +17,7 @@ import balalaika from '../../assets/balalaika.webp'
 import banjo4 from '../../assets/banjo4.webp' 
 import banjo5 from '../../assets/banjo5.webp' 
 import H1 from "../../components/headers/H1"
+import Paragraph from "../../components/paragraph/Paragraph"
 
 
 interface WhatsTuningProps {
@@ -146,15 +147,17 @@ const WhatsTuning = () => {
   // },[selectedInstrument])
 
   return (
-    <section className='w-full text-white p-8 md:p-10 lg:p-16 text-center'>
-        <H1 additionalClasses={'!text-white'} headerText={`What are you `} textIcon={undefined}/>
-        <H2 additionalClasses={'!text-emerald-500'} headerText={` tuning today`} textIcon={undefined}/>
-
-        {selectedInstrument ? 
-          <p className="text-zinc-600 font-bold capitalize"> // You have selected {selectedInstrument}</p> : 
-          <p className="text-zinc-600 font-bold capitalize"> // select an instrument</p>}
-
-        <div className="w-full mx-auto md: md:w-11/12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mt-8 ">
+    <section className='w-full text-white pb-8 md:pb-10 lg:pb-16 pt-0 text-center'>
+        <div className="w-full sticky top-0 py-4 md:py-10 lg:py-16 z-10 bg-zinc-900 border-b-[1px] border-zinc-800 after:absolute after:w-full after:h-full after:bg-white after:bg-opacity-0 after:backdrop-blur-md  after:-z-[2] bg-opacity-80 overflow-hidden after:left-0 after:top-0">
+          <H1 additionalClasses={'!text-white'} headerText={`What are you `} textIcon={undefined}/>
+          <H2 additionalClasses={'!text-emerald-500'} headerText={` tuning today`} textIcon={undefined}/>
+          {selectedInstrument ? 
+        <Paragraph additionalClasses={undefined} paragraphText={`// You have selected ${selectedInstrument}`} /> : 
+        <Paragraph additionalClasses={undefined} paragraphText={"// select an instrument"} />}
+        </div>
+       
+        <div className="w-full mx-auto md: md:w-11/12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mt-8 px-8 md:px-10 lg:px-16">
+        
           {tuningSelection?.map((item)=>(
           <div onClick={()=>{handleClick(item)}} id={item.id} key={item.key} className="cursor-pointer w-full col bg-zinc-900 rounded-xl py-8 px-4 flex items-center justify-start flex-col gap-2 md:gap-3   transition-all border-2 bg-opacity-50 border-zinc-900 hover:border-emerald-400  active:border-emerald-300 after:absolute after:w-full after:h-full after:bg-white after:bg-opacity-0 after:backdrop-blur-sm relative after:-z-[2] z-0 overflow-hidden">
               <div className="w-20 h-20 md:w-32 md:h-32 lg:w-40 lg:h-40  rounded-full bg-cover bg-center mb-3 "

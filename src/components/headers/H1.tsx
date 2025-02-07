@@ -1,9 +1,9 @@
 import { ReactElement } from "react"
 
 type Props = {
-    additionalClasses:string | undefined,
-    headerText:string,
-    textIcon : undefined | ReactElement
+  additionalClasses:string | undefined,
+  headerText:string,
+  textIcon : undefined | ReactElement
 }
 
 const H1 = (props: Props) => {
