@@ -33,7 +33,7 @@ const WhatsTuning = () => {
   const [selectedInstrument,setSelectedInstrument] = useState<string>()
 
   const handleClick = (item:WhatsTuningProps) => {
-    setSelectedInstrument(item.id)
+    item.id ? setSelectedInstrument(item.id) : null;
   }
 
   useEffect(() => {
@@ -65,7 +65,7 @@ const WhatsTuning = () => {
       image: ukulele,
       title: 'Ukulele',
       description: '',
-      id: "ululele"
+      id: "ukulele"
     },
     {
       key: 5,
@@ -150,7 +150,9 @@ const WhatsTuning = () => {
         <H1 additionalClasses={'!text-white'} headerText={`What are you `} textIcon={undefined}/>
         <H2 additionalClasses={'!text-emerald-500'} headerText={` tuning today`} textIcon={undefined}/>
 
-        {selectedInstrument ? <p>You have selected {selectedInstrument}</p> : ''}
+        {selectedInstrument ? 
+          <p className="text-zinc-600 font-bold capitalize"> // You have selected {selectedInstrument}</p> : 
+          <p className="text-zinc-600 font-bold capitalize"> // select an instrument</p>}
 
         <div className="w-full mx-auto md: md:w-11/12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mt-8 ">
           {tuningSelection?.map((item)=>(
