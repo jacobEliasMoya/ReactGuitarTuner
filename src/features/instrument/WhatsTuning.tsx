@@ -31,10 +31,10 @@ interface WhatsTuningProps {
 const WhatsTuning = () => {
 
   const [tuningSelection, setTuningSelection] = useState<WhatsTuningProps[]>()
-  const [selectedInstrument,setSelectedInstrument] = useState<string>()
+  const [selectedInstrument,setSelectedInstrument] = useState<WhatsTuningProps>()
 
   const handleClick = (item:WhatsTuningProps) => {
-    item.id ? setSelectedInstrument(item.id) : null;
+    item.id ? setSelectedInstrument(item) : null;
   }
 
   useEffect(() => {
@@ -152,7 +152,7 @@ const WhatsTuning = () => {
           <H1 additionalClasses={'!text-white'} headerText={`What are you `} textIcon={undefined}/>
           <H2 additionalClasses={'!text-emerald-500'} headerText={` tuning today`} textIcon={undefined}/>
           {selectedInstrument ? 
-        <Paragraph additionalClasses={undefined} paragraphText={`// You have selected ${selectedInstrument}`} /> : 
+        <Paragraph additionalClasses={undefined} paragraphText={`// You have selected ${selectedInstrument.title}`} /> : 
         <Paragraph additionalClasses={undefined} paragraphText={"// select an instrument"} />}
         </div>
        
