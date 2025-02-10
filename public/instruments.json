@@ -1,0 +1,102 @@
+{
+  "instruments": [
+    {
+      "key": 1,
+      "image": "../../../src/assets/guitar.webp",
+      "title": "Guitar",
+      "description": "6-string",
+      "id": "six-string"
+    },
+    {
+      "key": 2,
+      "image": "../../../src/assets/7-string.webp",
+      "title": "Guitar",
+      "description": "7-string",
+      "id": "seven-string"
+    },
+    {
+      "key": 3,
+      "image": "../../../src/assets/12-string.webp",
+      "title": "Guitar",
+      "description": "12-string",
+      "id": "twelve-string"
+    },
+    {
+      "key": 4,
+      "image": "../../../src/assets/ukulele.webp",
+      "title": "Ukulele",
+      "description": "",
+      "id": "ukulele"
+    },
+    {
+      "key": 5,
+      "image": "../../../src/assets/bass4.webp",
+      "title": "Bass",
+      "description": "4-string",
+      "id": "four-string-bass"
+    },
+    {
+      "key": 6,
+      "image": "../../../src/assets/bass5.webp",
+      "title": "Bass",
+      "description": "5-string",
+      "id": "five-string-bass"
+    },
+    {
+      "key": 7,
+      "image": "../../../src/assets/violin.webp",
+      "title": "Violin/ Fiddle",
+      "description": "",
+      "id": "violin"
+    },
+    {
+      "key": 8,
+      "image": "../../../src/assets/cello.webp",
+      "title": "Cello",
+      "description": "",
+      "id": "cello"
+    },
+    {
+      "key": 9,
+      "image": "../../../src/assets/viola.webp",
+      "title": "Viola",
+      "description": "",
+      "id": "viola"
+    },
+    {
+      "key": 10,
+      "image": "../../../src/assets/cavaquino.webp",
+      "title": "Cavaquinho",
+      "description": "",
+      "id": "cavaquinho"
+    },
+    {
+      "key": 11,
+      "image": "../../../src/assets/mandolin.webp",
+      "title": "Mandolin",
+      "description": "",
+      "id": "mandolin"
+    },
+    {
+      "key": 12,
+      "image": "../../../src/assets/balalaika.webp",
+      "title": "Balalaika",
+      "description": "",
+      "id": "balalaika"
+    },
+    {
+      "key": 13,
+      "image": "../../../src/assets/banjo4.webp",
+      "title": "Banjo",
+      "description": "4-string",
+      "id": "four-string-banjo"
+    },
+    {
+      "key": 14,
+      "image": "../../../src/assets/banjo5.webp",
+      "title": "Banjo",
+      "description": "5-string",
+      "id": "five-string-banjo"
+    }
+  ]
+}
