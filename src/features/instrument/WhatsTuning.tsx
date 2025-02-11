@@ -90,7 +90,7 @@ const WhatsTuning = () => {
         ))}
       </div>
     
-      <ConfirmationPopup moduleBool={isModuleActive} widgetText={`${selectedInstrument ? selectedInstrument.description.replace('-',' ') : null } ${selectedInstrument ? selectedInstrument.title : null}`} confirmClick={confirmModule} closeClick={closeModule}/>
+      <ConfirmationPopup moduleBool={isModuleActive} widgetText={`${selectedInstrument ? selectedInstrument.description.replace('-', ' ') : null} ${selectedInstrument ? selectedInstrument.title : null}`} confirmClick={confirmModule} closeClick={closeModule} confirmationText={"Please Confirm Your Selection:"}/>
     </section>  
   ) 
 }

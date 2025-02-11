@@ -5,6 +5,7 @@ import Paragraph from '../paragraph/Paragraph'
 type Props = {
     moduleBool: boolean,
     widgetText: string ,
+    confirmationText: string,
     confirmClick: ((event:React.MouseEvent<HTMLButtonElement>) => void) | undefined,
     closeClick: ((event:React.MouseEvent<HTMLButtonElement>) => void) | undefined
 }
@@ -17,9 +18,9 @@ const ConfirmationPopup = (props: Props) => {
                 <Paragraph additionalClasses={'!text-white'} paragraphText={"Attention: "}/>
             </div>
 
-            <div className="w-full flex flex-col items-center justify-center p-4 py-8">
-                <Paragraph additionalClasses={undefined} paragraphText={"You Have selected"}/>
-                <Paragraph additionalClasses={'!text-emerald-500'} paragraphText={props.widgetText} />           
+            <div className="w-full flex flex-col items-center justify-center p-4 py-8 ">
+                <Paragraph additionalClasses={undefined} paragraphText={props.confirmationText}/>
+                <Paragraph additionalClasses={'!text-emerald-500 !font-main'} paragraphText={props.widgetText} />           
             </div>
 
             <div className="w-full grid grid-cols-2">
