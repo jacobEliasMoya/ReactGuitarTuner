@@ -4,7 +4,7 @@ type Props = {
     buttonText:string,
     additionalClasses: string | undefined,
     textIcon : undefined | ReactElement,
-    onclick: (event:React.MouseEvent<HTMLButtonElement>)=>void,
+    onclick: ((event:React.MouseEvent<HTMLButtonElement>) => void) | undefined
 }
 
 const MainButton = (props: Props) => {
