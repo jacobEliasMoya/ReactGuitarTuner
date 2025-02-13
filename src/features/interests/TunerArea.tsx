@@ -9,33 +9,42 @@ const TunerArea = () => {
   const instrumentState = useAppSelector(state=>state.instrument)
 
   const [micStream,setMicStream] = useState<MediaStream>();
-  // const [micConsent, setmicConsent] = useState<boolean>(false);
-
-  // const handleConfimation = () => {
-  //   setmicConsent(true);
-  // }
-
-  useEffect(()=>{
-    instrumentState.id != '' ? console.log(instrumentState) : console.log('nothing yet')
-  },[instrumentState])
+  const [micContext,setMicContext] = useState< AudioContext>();
 
   useEffect(()=>{
 
-    const getMic = async () =>{
+    const getAudioContext = () => {
+      return new AudioContext();
+    }
+
+    const getMicStream = async () =>{
       try{
-        const mainStream = await navigator.mediaDevices.getUserMedia({audio: true})
-        mainStream ? setMicStream(mainStream) : null;
+        return await navigator.mediaDevices.getUserMedia({audio: true})
       }
       catch (error){
-        console.error('Denied Access', error )
+        console.error('Denieeeeeeed', error )
       }
     }
-    getMic()  },[])
+    
+    const contextStreamConnect = async () => {
 
+      const micStream = await getMicStream();
 
-  useEffect(()=>{
-    console.log(micStream ? micStream : null)
-  },[micStream])
+      if(!micStream){ return };
+
+      const audioContext = getAudioContext();
+      console.log(micStream, audioContext)
+
+    }
+
+    contextStreamConnect()
+    // return () =>{
+    //   if(micStream) {
+    //     micStream.getTracks().forEach(track=>track.stop())
+    //   }
+    // }
+
+  },[])
 
   return (
     <section className='w-full text-white pb-8 md:pb-10 lg:pb-16 pt-0 text-center relative'>
@@ -46,7 +55,6 @@ const TunerArea = () => {
       </div>
 
       <div className="w-full mx-auto md: md:w-11/12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mt-8 px-8 md:px-10 lg:px-16">
-      
       </div>
     
     </section>  
