@@ -8,7 +8,6 @@ import { useAppSelector } from "./hooks/hooks";
 function App() {
 
   const [isAppIitiated, setIsAppIitiated] = useState(false);
-
   const instrumentState = useAppSelector(state=>state.instrument)
   
   const navigate = useNavigate();
@@ -18,7 +17,8 @@ function App() {
   }
 
   useEffect(()=>{
-    isAppIitiated ? navigate('/instrument-selection') : null;
+    // timeout to let the animation run
+    isAppIitiated ? setTimeout(()=> navigate('/instrument-selection'), 350): null;
   },[isAppIitiated])
 
   useEffect(()=>{

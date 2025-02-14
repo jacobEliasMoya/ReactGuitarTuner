@@ -60,10 +60,6 @@ const WhatsTuning = () => {
     selectedInstrument ? setModule() :  null;
   },[selectedInstrument])
 
-  useEffect(()=>{
-    instrumentState.id != '' ? console.log(instrumentState) : console.log('nothing yet')
-  },[instrumentState])
-
   return (
     <section className='w-full text-white pb-8 md:pb-10 lg:pb-16 pt-0 text-center relative'>
       
@@ -75,10 +71,10 @@ const WhatsTuning = () => {
         <Paragraph additionalClasses={undefined} paragraphText={"// select an instrument"} />}
       </div>
       
-      <div className="w-full mx-auto md: md:w-11/12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mt-8 px-8 md:px-10 lg:px-16">
+      <div className="w-full mx-auto md:w-11/12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mt-8 px-8 md:px-10 lg:px-16">
       
       {tuningSelection?.map((item)=>(
-      <div onClick={()=>{handleClick(item)}} id={item.id} key={item.key} className="cursor-pointer w-full col bg-zinc-800 rounded-xl py-8 px-4 flex items-center justify-start flex-col gap-2 md:gap-3   transition-all border-2 bg-opacity-50 border-zinc-900 hover:border-emerald-400  active:border-emerald-300 after:absolute after:w-full after:h-full after:bg-white after:bg-opacity-0 after:backdrop-blur-sm relative after:-z-[2] z-0 overflow-hidden">
+        <div onClick={()=>{handleClick(item)}} id={item.id} key={item.key} className="cursor-pointer w-full col bg-zinc-800 rounded-xl py-8 px-4 flex items-center justify-start flex-col gap-2 md:gap-3   transition-all border-2 bg-opacity-50 border-zinc-900 hover:border-emerald-400  active:border-emerald-300 after:absolute after:w-full after:h-full after:bg-white after:bg-opacity-0 after:backdrop-blur-sm relative after:-z-[2] z-0 overflow-hidden">
             <div className="w-20 h-20 md:w-32 md:h-32 lg:w-40 lg:h-40  rounded-full bg-cover bg-center mb-3 "
               style={{
                 backgroundImage:`url(${item.image})`
