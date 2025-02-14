@@ -20,7 +20,7 @@ const CalibrationDisplay = (props: Props) => {
 
         <div className="w-[1px] h-32 md:h-40 bg-red-600 rounded-full absolute bottom-0 z-20" 
           style={{
-            left:props.calibrationNeedle
+            left:`${props.calibrationNeedle}%`
           }}
         ></div>
       </div>  

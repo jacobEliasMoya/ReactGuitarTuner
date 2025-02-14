@@ -58,13 +58,13 @@ return (
 
     </div>
 
-    <div className="w-full flex flex-col gap-20 items-end justify-center">
+    <div className="w-full flex flex-col gap-20 items-end justify-center px-8">
 
       <div className="w-full mx-auto md:w-11/12 flex items-center justify-center flex-col gap-4 md:gap-6  px-8 md:px-10 lg:px-16 md:mt-20 ">
         <NoteDisplay note={"A#"} supportiveText={"Almost in Tune"} hurtz={120}/>
       </div>
 
-      <CalibrationDisplay calibrationNeedle={122}/>
+      <CalibrationDisplay calibrationNeedle={90}/>
 
     </div>
 
