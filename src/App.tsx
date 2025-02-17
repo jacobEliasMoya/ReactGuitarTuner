@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import AppStart from "./components/layout/AppStart"
 import WhatsTuning from "./features/instrument/WhatsTuning";
 import {  Route, Routes, useNavigate } from "react-router";
-import TunerArea from "./features/interests/TunerArea";
+import TunerArea from "./features/selectedInstrument/TunerArea";
 import { useAppSelector } from "./hooks/hooks";
 
 function App() {

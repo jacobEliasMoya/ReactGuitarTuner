@@ -1,5 +1,5 @@
 import { useAppSelector } from "../../hooks/hooks"
-import { useEffect, useState } from "react" 
+import { useEffect} from "react" 
 
 import H1 from "../../components/headers/H1"
 import H2 from "../../components/headers/H2"
@@ -10,14 +10,10 @@ const TunerArea = () => {
 
 const instrumentState = useAppSelector(state=>state.instrument)
 
-const [micStream,setMicStream] = useState<MediaStream>();
-const [micContext,setMicContext] = useState<AudioContext>();
+// const [micStream,setMicStream] = useState<MediaStream>();
+// const [micContext,setMicContext] = useState<AudioContext>();
 
 useEffect(()=>{
-
-  const getAudioContext = () => {
-    return new AudioContext();
-  }
 
   const getMicStream = async () =>{
     try{
@@ -28,14 +24,29 @@ useEffect(()=>{
     }
   }
   
+  const getAudioContext = () => {
+    return new AudioContext();
+  }
+
+  const getAudioAnalyser = (audioContext:AudioContext) => {
+    return  audioContext.createAnalyser();
+  }
+
   const contextStreamConnect = async () => {
 
     const micStream = await getMicStream();
 
-    if(!micStream){ return };
+    if(!micStream){ return }
 
     const audioContext = getAudioContext();
-    console.log(micStream, audioContext)
+    const audioAnalyser = getAudioAnalyser(audioContext); 
+
+    const source = audioContext.createMediaStreamSource(micStream);
+    
+    const connected = source.connect(audioAnalyser);
+
+    console.log(connected)
+
   }
 
   contextStreamConnect();
@@ -64,7 +75,7 @@ return (
         <NoteDisplay note={"A#"} supportiveText={"Almost in Tune"} hurtz={120}/>
       </div>
 
-      <CalibrationDisplay calibrationNeedle={90}/>
+      <CalibrationDisplay calibrationNeedle={10}/>
 
     </div>
 

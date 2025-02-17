@@ -30,7 +30,6 @@ const WhatsTuning = () => {
   const dispatch = useAppDispatch();
 
   const handleClick = (item:WhatsTuningProps) => {
-    // item ? dispatch(setInstrument(item)) : null;
     item ? setselectedInstrument(item) : null
   }
 

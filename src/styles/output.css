@@ -659,10 +659,6 @@ video {
   height: 7rem;
 }
 
-.h-32 {
-  height: 8rem;
-}
-
 .h-36 {
   height: 9rem;
 }
@@ -1120,14 +1116,6 @@ video {
   box-shadow: -15em -15em 1em -5em #00000026;
 }
 
-.\[left\:150px\] {
-  left: 150px;
-}
-
-.\[left\:50px\] {
-  left: 50px;
-}
-
 .after\:absolute::after {
   content: var(--tw-content);
   position: absolute;
@@ -1273,10 +1261,6 @@ video {
 
   .md\:h-36 {
     height: 9rem;
-  }
-
-  .md\:h-40 {
-    height: 10rem;
   }
 
   .md\:h-52 {
