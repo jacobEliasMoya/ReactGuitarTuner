@@ -5,98 +5,112 @@
       "image": "/assets/guitar.webp",
       "title": "Guitar",
       "description": "6-string",
-      "id": "six-string"
+      "id": "six-string",
+      "standardTuning": ["E", "A", "D", "G", "B", "E"]
     },
     {
       "key": 2,
       "image": "/assets/7-string.webp",
       "title": "Guitar",
       "description": "7-string",
-      "id": "seven-string"
+      "id": "seven-string",
+      "standardTuning": ["B", "E", "A", "D", "G", "B", "E"]
     },
     {
       "key": 3,
       "image": "/assets/12-string.webp",
       "title": "Guitar",
       "description": "12-string",
-      "id": "twelve-string"
+      "id": "twelve-string",
+      "standardTuning": ["E", "E", "A", "A", "D", "D", "G", "G", "B", "B", "E", "E"]
     },
     {
       "key": 4,
       "image": "/assets/ukulele.webp",
       "title": "Ukulele",
       "description": "",
-      "id": "ukulele"
+      "id": "ukulele",
+      "standardTuning": ["G", "C", "E", "A"]
     },
     {
       "key": 5,
       "image": "/assets/bass4.webp",
       "title": "Bass",
       "description": "4-string",
-      "id": "four-string-bass"
+      "id": "four-string-bass",
+      "standardTuning": ["E", "A", "D", "G"]
     },
     {
       "key": 6,
       "image": "/assets/bass5.webp",
       "title": "Bass",
       "description": "5-string",
-      "id": "five-string-bass"
+      "id": "five-string-bass",
+      "standardTuning": ["B", "E", "A", "D", "G"]
     },
     {
       "key": 7,
       "image": "/assets/violin.webp",
       "title": "Violin/ Fiddle",
       "description": "",
-      "id": "violin"
+      "id": "violin",
+      "standardTuning": ["G", "D", "A", "E"]
     },
     {
       "key": 8,
       "image": "/assets/cello.webp",
       "title": "Cello",
       "description": "",
-      "id": "cello"
+      "id": "cello",
+      "standardTuning": ["C", "G", "D", "A"]
     },
     {
       "key": 9,
       "image": "/assets/viola.webp",
       "title": "Viola",
       "description": "",
-      "id": "viola"
+      "id": "viola",
+      "standardTuning": ["C", "G", "D", "A"]
     },
     {
       "key": 10,
       "image": "/assets/cavaquino.webp",
       "title": "Cavaquinho",
       "description": "",
-      "id": "cavaquinho"
+      "id": "cavaquinho",
+      "standardTuning": ["D", "G", "B", "D"]
     },
     {
       "key": 11,
       "image": "/assets/mandolin.webp",
       "title": "Mandolin",
       "description": "",
-      "id": "mandolin"
+      "id": "mandolin",
+      "standardTuning": ["G", "D", "A", "E"]
     },
     {
       "key": 12,
       "image": "/assets/balalaika.webp",
       "title": "Balalaika",
       "description": "",
-      "id": "balalaika"
+      "id": "balalaika",
+      "standardTuning": ["E", "E", "A"]
     },
     {
       "key": 13,
       "image": "/assets/banjo4.webp",
       "title": "Banjo",
       "description": "4-string",
-      "id": "four-string-banjo"
+      "id": "four-string-banjo",
+      "standardTuning": ["C", "G", "D", "A"]
     },
     {
       "key": 14,
       "image": "/assets/banjo5.webp",
       "title": "Banjo",
       "description": "5-string",
-      "id": "five-string-banjo"
+      "id": "five-string-banjo",
+      "standardTuning": ["G", "D", "G", "B", "D"]
     }
   ]
 }

@@ -10,26 +10,20 @@ import H2 from "../../components/headers/H2"
 import H3 from "../../components/headers/H3"
 import H4 from "../../components/headers/H4"
 import ConfirmationPopup from "../../components/widgets/ConfirmationPopup"
+import { InstrumentType } from "../../types/instrumentType"
 
-interface WhatsTuningProps {
-  key:number,
-  image:string,
-  title:string,
-  description:string,
-  id:string
-}
 
 const WhatsTuning = () => {
 
-  const [tuningSelection, setTuningSelection] = useState<WhatsTuningProps[]>()
-  const [selectedInstrument, setselectedInstrument] = useState<WhatsTuningProps>()
+  const [tuningSelection, setTuningSelection] = useState<InstrumentType[]>()
+  const [selectedInstrument, setselectedInstrument] = useState<InstrumentType>()
 
   const [isModuleActive, setIsModuleActive] = useState<boolean>(false);
 
   const instrumentState = useAppSelector(state=>state.instrument)
   const dispatch = useAppDispatch();
 
-  const handleClick = (item:WhatsTuningProps) => {
+  const handleClick = (item:InstrumentType) => {
     item ? setselectedInstrument(item) : null
   }
 

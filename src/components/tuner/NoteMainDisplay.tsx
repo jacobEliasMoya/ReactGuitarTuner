@@ -1,4 +1,4 @@
-import H3 from "../../components/headers/H3"
+import H3 from "../headers/H3"
 import Paragraph from "../paragraph/Paragraph"
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
     hurtz:number
 }
 
-const NoteDisplay = (props: Props) => {
+const NoteMainDisplay = (props: Props) => {
   return (
     <>
         <div className="w-36 h-36 md:w-52 md:h-52  bg-zinc-800 rounded-full flex items-center justify-center border-2 md:border-4 border-emerald-600">
@@ -20,4 +20,4 @@ const NoteDisplay = (props: Props) => {
   )
 }
 
-export default NoteDisplay
+export default NoteMainDisplay

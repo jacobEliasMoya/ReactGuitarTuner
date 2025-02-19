@@ -659,6 +659,10 @@ video {
   height: 7rem;
 }
 
+.h-32 {
+  height: 8rem;
+}
+
 .h-36 {
   height: 9rem;
 }
@@ -1261,6 +1265,10 @@ video {
 
   .md\:h-36 {
     height: 9rem;
+  }
+
+  .md\:h-40 {
+    height: 10rem;
   }
 
   .md\:h-52 {
