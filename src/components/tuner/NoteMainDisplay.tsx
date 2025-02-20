@@ -4,7 +4,7 @@ import Paragraph from "../paragraph/Paragraph"
 type Props = {
     note: string,
     supportiveText:string,
-    hurtz:number
+    hurtz:string
 }
 
 const NoteMainDisplay = (props: Props) => {

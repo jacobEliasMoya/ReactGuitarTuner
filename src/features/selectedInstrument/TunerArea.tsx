@@ -1,5 +1,5 @@
 import { useAppSelector } from "../../hooks/hooks"
-import { useEffect, useRef} from "react" 
+import { useEffect, useRef, useState} from "react" 
 
 import H1 from "../../components/headers/H1"
 import H2 from "../../components/headers/H2"
@@ -9,11 +9,42 @@ import TuningNotes from "../../components/tuner/TuningNotes"
 
 const TunerArea = () => {
 
-  const instrumentState = useAppSelector(state=>state.instrument)
+  const instrumentState = useAppSelector(state=>state.instrument); // my global state
+
+  const [pitchHurtz, setPitchHurtz] = useState<number|null>(null)
+  const [currentNote, setCurrentNote] = useState<string>("");
+
   const audioContextRef = useRef<AudioContext | null>(null);
   const audioAnalyserRef = useRef<AnalyserNode | null>(null);
-  const dataArRef = useRef<Uint8Array | null>(null);
+  const dataBuffer = useRef<Float32Array | null> (null);
 
+  const detectPitch = (buffer: Float32Array, sampleRate: number): number | null => {
+    let bestOffset = -1;
+    let bestCorrelation = 0;
+    let size = buffer.length;
+  
+    for (let offset = 1; offset < size / 2; offset++) {
+      let correlation = 0;
+      for (let i = 0; i < size / 2; i++) {
+        correlation += Math.abs(buffer[i] - buffer[i + offset]);
+      }
+      correlation = 1 - correlation / (size / 2);
+  
+      if (correlation > bestCorrelation) {
+        bestCorrelation = correlation;
+        bestOffset = offset;
+      }
+    }
+  
+    return bestOffset > 0 ? sampleRate / bestOffset : null;
+  };
+
+  const noteFromFrequency = (frequency: number): string => {
+    const noteNames = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+    const A4 = 440;
+    const semitonesFromA4 = Math.round(12 * Math.log2(frequency / A4));
+    return noteNames[(semitonesFromA4 + 69) % 12];
+  };
 
   useEffect(()=>{
 
@@ -37,34 +68,37 @@ const TunerArea = () => {
     const contextStreamConnect = async () => {
 
       const micStream = await getMicStream();
-
-      if(!micStream){ return }
+      if(!micStream){ return } 
 
       const audioContext = getAudioContext();
       const audioAnalyser = getAudioAnalyser(audioContext); 
-
       const source = audioContext.createMediaStreamSource(micStream);
       source.connect(audioAnalyser);
 
       audioContextRef.current = audioContext;
       audioAnalyserRef.current = audioAnalyser;
-      dataArRef.current = new Uint8Array(audioAnalyser.frequencyBinCount);
+      dataBuffer.current = new Float32Array(audioAnalyser.fftSize);
 
       const updateData = () => {
-        if (audioAnalyserRef.current && dataArRef.current) {
-          audioAnalyserRef.current.getByteFrequencyData(dataArRef.current);
-          console.log(dataArRef.current); 
+        if (audioAnalyserRef.current && dataBuffer.current) {
+          audioAnalyserRef.current.getFloatTimeDomainData(dataBuffer.current);
+
+          const sampleRate = audioContextRef.current?.sampleRate || 44100;
+          const pitch = detectPitch(dataBuffer.current, sampleRate);
+
+            if(pitch){
+              const note = noteFromFrequency(pitch);
+              setCurrentNote(note)
+              setPitchHurtz(pitch)
+            }
         }
-  
         requestAnimationFrame(updateData);
       };
-  
+
       updateData();
 
     }
-    
     contextStreamConnect();
-
   },[])
 
  
@@ -75,17 +109,12 @@ const TunerArea = () => {
         <H1 additionalClasses={'!text-white'} headerText={`Lets Get Tuning  `} textIcon={undefined}/>
         <H2 additionalClasses={' !text-emerald-500'} headerText={`Your ${`${instrumentState ? instrumentState.description.replace('-',' ') : null } ${instrumentState.title}`}`} textIcon={undefined}/> 
       </div>
-
       <div className="w-full flex flex-col gap-20 items-end justify-center px-8">
-
         <div className="w-full mx-auto md:w-11/12 flex items-center justify-center flex-col gap-4 md:gap-6  px-8 md:px-10 lg:px-16 md:mt-20 ">
-          <NoteDisplay note={instrumentState.standardTuning[0]} supportiveText={"Almost in Tune"} hurtz={10.25}/>
+          <NoteDisplay note={currentNote} supportiveText={"Almost in Tune"} hurtz={pitchHurtz ? pitchHurtz.toFixed(2) : ''}/>
         </div>
-
         <CalibrationDisplay calibrationNeedle={66}/>
-
       </div>
-
       <div className="w-full flex flex-row justify-center lg:p-11 bg-zinc-800 border-t-[1px] border-zinc-700 after:absolute after:w-full after:h-full after:bg-white after:bg-opacity-0 after:backdrop-blur-md  after:-z-[2] bg-opacity-80 overflow-hidden after:left-0 after:!top-0 md:mt-20 text-xs md:text-md lg:text-xl font-secondary ">
         <div className="w-full lg:w-1/2 flex flex-row justify-center lg:rounded-3xl overflow-hidden border-4 border-t-zinc-700 border-r-zinc-700 border-b-zinc-900 border-zinc-900">
           <TuningNotes notes={instrumentState.standardTuning}/>
