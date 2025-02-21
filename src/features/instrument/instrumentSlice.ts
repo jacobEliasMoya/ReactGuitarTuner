@@ -9,7 +9,10 @@ const initialState:InstrumentType = {
     title:'',
     description: '',
     id:'',
-    standardTuning:['']
+    standardTuning:[{
+        note:"",
+        frequency: 0
+    }]
 }
 
 // using createSlice from redux toolikit 

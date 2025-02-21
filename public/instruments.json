@@ -6,7 +6,14 @@
       "title": "Guitar",
       "description": "6-string",
       "id": "six-string",
-      "standardTuning": ["E", "A", "D", "G", "B", "E"]
+      "standardTuning": [
+        { "note": "E2", "frequency": 82.41 },
+        { "note": "A2", "frequency": 110.00 },
+        { "note": "D3", "frequency": 146.83 },
+        { "note": "G3", "frequency": 196.00 },
+        { "note": "B3", "frequency": 246.94 },
+        { "note": "E4", "frequency": 329.63 }
+      ]
     },
     {
       "key": 2,
@@ -14,7 +21,15 @@
       "title": "Guitar",
       "description": "7-string",
       "id": "seven-string",
-      "standardTuning": ["B", "E", "A", "D", "G", "B", "E"]
+      "standardTuning": [
+        { "note": "B1", "frequency": 61.74 },
+        { "note": "E2", "frequency": 82.41 },
+        { "note": "A2", "frequency": 110.00 },
+        { "note": "D3", "frequency": 146.83 },
+        { "note": "G3", "frequency": 196.00 },
+        { "note": "B3", "frequency": 246.94 },
+        { "note": "E4", "frequency": 329.63 }
+      ]
     },
     {
       "key": 3,
@@ -22,7 +37,20 @@
       "title": "Guitar",
       "description": "12-string",
       "id": "twelve-string",
-      "standardTuning": ["E", "E", "A", "A", "D", "D", "G", "G", "B", "B", "E", "E"]
+      "standardTuning": [
+        { "note": "E2", "frequency": 82.41 },
+        { "note": "E2", "frequency": 82.41 },
+        { "note": "A2", "frequency": 110.00 },
+        { "note": "A2", "frequency": 110.00 },
+        { "note": "D3", "frequency": 146.83 },
+        { "note": "D3", "frequency": 146.83 },
+        { "note": "G3", "frequency": 196.00 },
+        { "note": "G3", "frequency": 196.00 },
+        { "note": "B3", "frequency": 246.94 },
+        { "note": "B3", "frequency": 246.94 },
+        { "note": "E4", "frequency": 329.63 },
+        { "note": "E4", "frequency": 329.63 }
+      ]
     },
     {
       "key": 4,
@@ -30,7 +58,12 @@
       "title": "Ukulele",
       "description": "",
       "id": "ukulele",
-      "standardTuning": ["G", "C", "E", "A"]
+      "standardTuning": [
+        { "note": "G4", "frequency": 392.00 },
+        { "note": "C4", "frequency": 261.63 },
+        { "note": "E4", "frequency": 329.63 },
+        { "note": "A4", "frequency": 440.00 }
+      ]
     },
     {
       "key": 5,
@@ -38,7 +71,12 @@
       "title": "Bass",
       "description": "4-string",
       "id": "four-string-bass",
-      "standardTuning": ["E", "A", "D", "G"]
+      "standardTuning": [
+        { "note": "E1", "frequency": 41.20 },
+        { "note": "A1", "frequency": 55.00 },
+        { "note": "D2", "frequency": 73.42 },
+        { "note": "G2", "frequency": 98.00 }
+      ]
     },
     {
       "key": 6,
@@ -46,7 +84,13 @@
       "title": "Bass",
       "description": "5-string",
       "id": "five-string-bass",
-      "standardTuning": ["B", "E", "A", "D", "G"]
+      "standardTuning": [
+        { "note": "B0", "frequency": 30.87 },
+        { "note": "E1", "frequency": 41.20 },
+        { "note": "A1", "frequency": 55.00 },
+        { "note": "D2", "frequency": 73.42 },
+        { "note": "G2", "frequency": 98.00 }
+      ]
     },
     {
       "key": 7,
@@ -54,7 +98,12 @@
       "title": "Violin/ Fiddle",
       "description": "",
       "id": "violin",
-      "standardTuning": ["G", "D", "A", "E"]
+      "standardTuning": [
+        { "note": "G3", "frequency": 196.00 },
+        { "note": "D4", "frequency": 293.66 },
+        { "note": "A4", "frequency": 440.00 },
+        { "note": "E5", "frequency": 659.26 }
+      ]
     },
     {
       "key": 8,
@@ -62,7 +111,12 @@
       "title": "Cello",
       "description": "",
       "id": "cello",
-      "standardTuning": ["C", "G", "D", "A"]
+      "standardTuning": [
+        { "note": "C2", "frequency": 65.41 },
+        { "note": "G2", "frequency": 98.00 },
+        { "note": "D3", "frequency": 146.83 },
+        { "note": "A3", "frequency": 220.00 }
+      ]
     },
     {
       "key": 9,
@@ -70,7 +124,12 @@
       "title": "Viola",
       "description": "",
       "id": "viola",
-      "standardTuning": ["C", "G", "D", "A"]
+      "standardTuning": [
+        { "note": "C3", "frequency": 130.81 },
+        { "note": "G3", "frequency": 196.00 },
+        { "note": "D4", "frequency": 293.66 },
+        { "note": "A4", "frequency": 440.00 }
+      ]
     },
     {
       "key": 10,
@@ -78,7 +137,12 @@
       "title": "Cavaquinho",
       "description": "",
       "id": "cavaquinho",
-      "standardTuning": ["D", "G", "B", "D"]
+      "standardTuning": [
+        { "note": "D4", "frequency": 293.66 },
+        { "note": "G4", "frequency": 392.00 },
+        { "note": "B4", "frequency": 493.88 },
+        { "note": "D5", "frequency": 587.33 }
+      ]
     },
     {
       "key": 11,
@@ -86,7 +150,12 @@
       "title": "Mandolin",
       "description": "",
       "id": "mandolin",
-      "standardTuning": ["G", "D", "A", "E"]
+      "standardTuning": [
+        { "note": "G3", "frequency": 196.00 },
+        { "note": "D4", "frequency": 293.66 },
+        { "note": "A4", "frequency": 440.00 },
+        { "note": "E5", "frequency": 659.26 }
+      ]
     },
     {
       "key": 12,
@@ -94,7 +163,11 @@
       "title": "Balalaika",
       "description": "",
       "id": "balalaika",
-      "standardTuning": ["E", "E", "A"]
+      "standardTuning": [
+        { "note": "E3", "frequency": 164.81 },
+        { "note": "E3", "frequency": 164.81 },
+        { "note": "A3", "frequency": 220.00 }
+      ]
     },
     {
       "key": 13,
@@ -102,7 +175,12 @@
       "title": "Banjo",
       "description": "4-string",
       "id": "four-string-banjo",
-      "standardTuning": ["C", "G", "D", "A"]
+      "standardTuning": [
+        { "note": "C4", "frequency": 261.63 },
+        { "note": "G4", "frequency": 392.00 },
+        { "note": "D5", "frequency": 587.33 },
+        { "note": "A5", "frequency": 880.00 }
+      ]
     },
     {
       "key": 14,
@@ -110,7 +188,13 @@
       "title": "Banjo",
       "description": "5-string",
       "id": "five-string-banjo",
-      "standardTuning": ["G", "D", "G", "B", "D"]
+      "standardTuning": [
+        { "note": "G3", "frequency": 196.00 },
+        { "note": "D4", "frequency": 293.66 },
+        { "note": "G4", "frequency": 392.00 },
+        { "note": "B4", "frequency": 493.88 },
+        { "note": "D5", "frequency": 587.33 }
+      ]
     }
   ]
 }

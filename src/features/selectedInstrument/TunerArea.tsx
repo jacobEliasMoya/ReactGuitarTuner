@@ -1,3 +1,5 @@
+import * as Pitchfinder from "pitchfinder"
+
 import { useAppSelector } from "../../hooks/hooks"
 import { useEffect, useRef, useState} from "react" 
 
@@ -6,6 +8,7 @@ import H2 from "../../components/headers/H2"
 import NoteDisplay from "../../components/tuner/NoteMainDisplay"
 import CalibrationDisplay from "../../components/tuner/CalibrationDisplay"
 import TuningNotes from "../../components/tuner/TuningNotes"
+
 
 const TunerArea = () => {
 
@@ -18,33 +21,10 @@ const TunerArea = () => {
   const audioAnalyserRef = useRef<AnalyserNode | null>(null);
   const dataBuffer = useRef<Float32Array | null> (null);
 
-  const detectPitch = (buffer: Float32Array, sampleRate: number): number | null => {
-    let bestOffset = -1;
-    let bestCorrelation = 0;
-    let size = buffer.length;
-  
-    for (let offset = 1; offset < size / 2; offset++) {
-      let correlation = 0;
-      for (let i = 0; i < size / 2; i++) {
-        correlation += Math.abs(buffer[i] - buffer[i + offset]);
-      }
-      correlation = 1 - correlation / (size / 2);
-  
-      if (correlation > bestCorrelation) {
-        bestCorrelation = correlation;
-        bestOffset = offset;
-      }
-    }
-  
-    return bestOffset > 0 ? sampleRate / bestOffset : null;
-  };
-
-  const noteFromFrequency = (frequency: number): string => {
-    const noteNames = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
-    const A4 = 440;
-    const semitonesFromA4 = Math.round(12 * Math.log2(frequency / A4));
-    return noteNames[(semitonesFromA4 + 69) % 12];
-  };
+  // ai taught me when it comes to music / audio streams classic for loops are the key
+  const checkNote = (note:string,frequency:number) =>{
+    const offSet1:number = 20;
+  }
 
   useEffect(()=>{
 
@@ -65,6 +45,8 @@ const TunerArea = () => {
       return  audioContext.createAnalyser();
     }
 
+    const detectPitch = Pitchfinder.YIN();
+
     const contextStreamConnect = async () => {
 
       const micStream = await getMicStream();
@@ -81,14 +63,13 @@ const TunerArea = () => {
 
       const updateData = () => {
         if (audioAnalyserRef.current && dataBuffer.current) {
+
           audioAnalyserRef.current.getFloatTimeDomainData(dataBuffer.current);
-
-          const sampleRate = audioContextRef.current?.sampleRate || 44100;
-          const pitch = detectPitch(dataBuffer.current, sampleRate);
-
+          
+          const pitch = detectPitch(dataBuffer.current);
             if(pitch){
-              const note = noteFromFrequency(pitch);
-              setCurrentNote(note)
+              // const note = noteFromFrequency(pitch);
+              // setCurrentNote(note)
               setPitchHurtz(pitch)
             }
         }
