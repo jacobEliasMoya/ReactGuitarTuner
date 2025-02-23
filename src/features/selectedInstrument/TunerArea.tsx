@@ -24,46 +24,44 @@ const TunerArea = () => {
 
   // ai taught me when it comes to music / audio streams classic for loops are the key ... lol me going straing to foreachs
   const noteFromFrequency = (pitch:number) =>{
-    const offset:number = 5;
-    instrumentState.standardTuning.forEach((item)=>{
+    console.log(pitch)
+  }
 
-      if (pitch + offset > item.frequency &&   pitch - offset < item.frequency) {
-        setAlmostTuned(`looks like your trying to tune ${item.note}`)
-        setCurrentNote(`${item.note}`)
-      }
-    })
+  const getMicStream = async () =>{
+    try{
+      return await navigator.mediaDevices.getUserMedia({audio: true})
+    }
+    catch (error){
+      console.error('Denieeeeeeed', error )
+    }
+  }
+  
+  const getAudioContext = () => {
+    return new AudioContext();
+  }
+
+  const getAudioAnalyser = (audioContext:AudioContext) => {
+    return  audioContext.createAnalyser();
+  }
+
+  const detectPitch = (audioCtx:number) => {
+    return Pitchfinder.YIN({sampleRate:audioCtx});
   }
 
   useEffect(()=>{
 
-    const getMicStream = async () =>{
-      try{
-        return await navigator.mediaDevices.getUserMedia({audio: true})
-      }
-      catch (error){
-        console.error('Denieeeeeeed', error )
-      }
-    }
-    
-    const getAudioContext = () => {
-      return new AudioContext();
-    }
-
-    const getAudioAnalyser = (audioContext:AudioContext) => {
-      return  audioContext.createAnalyser();
-    }
-
-    const detectPitch = Pitchfinder.YIN();
-
     const contextStreamConnect = async () => {
 
       const micStream = await getMicStream();
+
       if(!micStream){ return } 
 
       const audioContext = getAudioContext();
       const audioAnalyser = getAudioAnalyser(audioContext); 
       const source = audioContext.createMediaStreamSource(micStream);
-      
+      console.log(audioContext.sampleRate)
+      const pitchDetect = detectPitch(audioContext.sampleRate);
+
       source.connect(audioAnalyser);
 
       audioContextRef.current = audioContext;
@@ -72,20 +70,16 @@ const TunerArea = () => {
 
       const updateData = () => {
         if (audioAnalyserRef.current && dataBuffer.current) {
-
           audioAnalyserRef.current.getFloatTimeDomainData(dataBuffer.current);
-          
-          const pitch = detectPitch(dataBuffer.current);
+          const pitch = pitchDetect(dataBuffer.current);
             if(pitch && pitch < 5000){
-              noteFromFrequency(pitch); 
+              // noteFromFrequency(pitch); 
               setPitchHurtz(pitch)
             }
         }
         requestAnimationFrame(updateData);
       };
-
       updateData();
-
     }
     contextStreamConnect();
   },[])
