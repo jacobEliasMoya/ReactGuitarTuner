@@ -7,7 +7,7 @@ import { useAppSelector } from "./hooks/hooks";
 
 function App() {
 
-  const [isAppIitiated, setIsAppIitiated] = useState(false);
+  const [isAppIitiated, setIsAppIitiated] = useState<boolean>();
   const instrumentState = useAppSelector(state=>state.instrument)
   
   const navigate = useNavigate();

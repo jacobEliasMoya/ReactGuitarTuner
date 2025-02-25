@@ -636,10 +636,6 @@ video {
   margin-top: 1rem;
 }
 
-.mt-8 {
-  margin-top: 2rem;
-}
-
 .flex {
   display: flex;
 }
@@ -953,10 +949,6 @@ video {
 
 .bg-repeat {
   background-repeat: repeat;
-}
-
-.p-2 {
-  padding: 0.5rem;
 }
 
 .p-3 {
@@ -1303,10 +1295,6 @@ video {
 
   .md\:p-3 {
     padding: 0.75rem;
-  }
-
-  .md\:p-4 {
-    padding: 1rem;
   }
 
   .md\:p-8 {

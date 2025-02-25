@@ -7,6 +7,7 @@ import H2 from "../../components/headers/H2"
 import NoteDisplay from "../../components/tuner/NoteMainDisplay"
 import CalibrationDisplay from "../../components/tuner/CalibrationDisplay"
 import TuningNotes from "../../components/tuner/TuningNotes"
+import { TuningInterface } from "../../types/tuningInterface"
 
 
 const TunerArea = () => {
@@ -14,9 +15,11 @@ const TunerArea = () => {
   const instrumentState = useAppSelector(state=>state.instrument); // my global state
 
   const [pitchHurtz, setPitchHurtz] = useState<number|null>(null)
-  const [hurtzDiffernce, sethurtzDiffernce] = useState<number|null>(null)
-  const [currentNote, setCurrentNote] = useState<string>("");
-  const [almostTuned, setAlmostTuned] = useState<string>("")
+  const [tuningInfo, setTuningInfo] = useState<TuningInterface>({
+    almostTuned: '',
+    currentNote: '',
+    hurtzDiffernce: null
+  });
 
   const audioContextRef = useRef<AudioContext | null>(null);
   const audioAnalyserRef = useRef<AnalyserNode | null>(null);
@@ -26,32 +29,48 @@ const TunerArea = () => {
   const approximateNote = (pitch:number) =>{
 
     const offset:number = 25;
+
     
     instrumentState.standardTuning.forEach((item)=>{
       if (pitch + offset > item.frequency &&   pitch - offset < item.frequency) {
-        setAlmostTuned(`looks like your trying to tune ${item.note}`)
-        setCurrentNote(`${item.note}`)
-        sethurtzDiffernce(pitch- item.frequency)
+        setTuningInfo((prev)=>({
+          ...prev,
+            almostTuned: `looks like your trying to tune ${item.note}`,
+            currentNote: `${item.note}`,
+            hurtzDiffernce: pitch- item.frequency
+        }))
 
         if (pitch + offset - 5 > item.frequency &&   pitch - offset - 5 < item.frequency) {
-          setAlmostTuned(`Getting Closer to  ${item.note}`)
-          setCurrentNote(`${item.note}`)
-          sethurtzDiffernce(pitch- item.frequency)
+          setTuningInfo((prev)=>({
+            ...prev,
+              almostTuned: `Getting Closer to ${item.note}`,
+              currentNote: `${item.note}`,
+              hurtzDiffernce: pitch- item.frequency
+          }))
 
           if (pitch + offset - 15 > item.frequency &&   pitch - offset - 15 < item.frequency) {
-            setAlmostTuned(`Super Close ${item.note}`)
-            setCurrentNote(`${item.note}`)
-            sethurtzDiffernce(pitch- item.frequency)
+            setTuningInfo((prev)=>({
+              ...prev,
+                almostTuned: `Super Close to ${item.note}`,
+                currentNote: `${item.note}`,
+                hurtzDiffernce: pitch- item.frequency
+            }))
             
             if (pitch + offset - 21 > item.frequency &&   pitch - offset - 21 < item.frequency) {
-              setAlmostTuned(`Just a Hair off ${item.note}`)
-              setCurrentNote(`${item.note}`)
-              sethurtzDiffernce(pitch- item.frequency)
+              setTuningInfo((prev)=>({
+                ...prev,
+                  almostTuned: `Just a Hair off ${item.note}`,
+                  currentNote: `${item.note}`,
+                  hurtzDiffernce: pitch- item.frequency
+              }))
 
               if (pitch + offset - 24 > item.frequency &&   pitch - offset - 24 < item.frequency) {
-                setAlmostTuned(`Pitch Perfect ${item.note} \n set to ${item.frequency}hz for perfection`)
-                setCurrentNote(`${item.note}`)
-                sethurtzDiffernce(pitch- item.frequency)
+                setTuningInfo((prev)=>({
+                  ...prev,
+                    almostTuned: `Pitch Perfect ${item.note} \n `,
+                    currentNote: `${item.note}`,
+                    hurtzDiffernce: pitch- item.frequency
+                }))
               }
             }
           }
@@ -127,8 +146,8 @@ const TunerArea = () => {
       <div className="w-full flex flex-col items-end justify-center px-8">
         <div className="w-full mx-auto md:w-11/12 flex items-center justify-center flex-col gap-2  px-8 md:px-10 lg:px-16  ">
           
-          <NoteDisplay note={currentNote ? currentNote : ''} supportiveText={almostTuned ? almostTuned : "get plucking"} hurtz={pitchHurtz ? pitchHurtz.toFixed(2) : '0'}/>
-          <CalibrationDisplay calibrationNeedle={hurtzDiffernce ? hurtzDiffernce : 0}/>
+          <NoteDisplay note={tuningInfo? tuningInfo.currentNote : ''} supportiveText={tuningInfo.almostTuned ? tuningInfo.almostTuned : "get plucking"} hurtz={pitchHurtz ? pitchHurtz.toFixed(2) : '0'}/>
+          <CalibrationDisplay calibrationNeedle={tuningInfo.hurtzDiffernce ? tuningInfo.hurtzDiffernce : 0}/>
 
         </div>
       </div>
