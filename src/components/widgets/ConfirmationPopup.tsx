@@ -24,7 +24,7 @@ const ConfirmationPopup = (props: Props) => {
             </div>
 
             <div className="w-full grid grid-cols-2">
-                <MainButton buttonText={""} additionalClasses={'!rounded-none flex items-center justify-center'} textIcon={<FaSquareCheck/>} onclick={props.confirmClick}/>   
+                <MainButton buttonText={""} additionalClasses={'!bg-lime-500 hover:!bg-lime-700 !rounded-none flex items-center justify-center !text-zinc-800 hover:!text-white'} textIcon={<FaSquareCheck/>} onclick={props.confirmClick}/>   
                 <MainButton buttonText={""} additionalClasses={'!bg-red-600 hover:!bg-red-700 !rounded-none flex items-center justify-center'} textIcon={<FaRectangleXmark/>} onclick={props.closeClick}/>            
             </div>
         </div>

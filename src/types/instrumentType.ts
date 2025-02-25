@@ -8,5 +8,5 @@ export interface InstrumentType {
     title: string;
     description: string;
     id: string;
-    standardTuning: Array<GuitarSixStandard>;
+    standardTuning: GuitarSixStandard[];
 }

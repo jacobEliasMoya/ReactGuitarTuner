@@ -18,7 +18,7 @@ function App() {
 
   useEffect(()=>{
     // timeout to let the animation run
-    isAppIitiated ? setTimeout(()=> navigate('/instrument-selection'), 350): null;
+    isAppIitiated ? navigate('/instrument-selection') : null;
   },[isAppIitiated])
 
   useEffect(()=>{
@@ -26,9 +26,9 @@ function App() {
   },[instrumentState])
 
   return (
-      <main className='transition-all ease min-h-screen flex flex-col items-center justify-start  bg-auto bg-repeat bg-zinc-900'>
+      <main className='min-h-screen flex flex-col items-center justify-start  bg-auto bg-repeat bg-red-500'>
         <Routes>
-          <Route path="/" element={<AppStart onclick={initializeApp} additionalClasses={!isAppIitiated ? 'animate-drop-n-rotate' : 'animate-drop-n-rotate-reverse'} />} />
+          <Route path="/" element={<AppStart onclick={initializeApp} additionalClasses={undefined} />} />
           <Route path="/instrument-selection" element={<WhatsTuning/>} />
           <Route path="/instrument-display" element={<TunerArea/>} />
         </Routes>
