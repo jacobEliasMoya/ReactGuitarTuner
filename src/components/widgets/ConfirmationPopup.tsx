@@ -13,18 +13,18 @@ type Props = {
 const ConfirmationPopup = (props: Props) => {
   return (
     <div className={`w-full h-full fixed left-0 ${props.moduleBool ? 'opacity-1 top-[0vh]' : 'opacity-0 top-[100vh]'} z-20 flex items-center justify-center bg-black bg-opacity-85 `}>
-        <div className=" w-2/3 md:w-96 min-h-10 flex flex-col rounded-lg overflow-hidden bg-zinc-800 ">
-            <div className="w-full flex items-center justify-center p-4 font-main text-xl bg-zinc-900">
+        <div className=" w-2/3 md:w-96 min-h-10 flex flex-col rounded-xl  bg-white border-2 border-zinc-950 hover:border-white">
+            <div className="w-full flex items-center justify-center p-4 font-main text-xl bg-red-500 rounded-t-lg">
                 <Paragraph additionalClasses={'!text-white'} paragraphText={"Attention: "}/>
             </div>
 
             <div className="w-full flex flex-col items-center justify-center p-4 py-8 ">
                 <Paragraph additionalClasses={undefined} paragraphText={props.confirmationText}/>
-                <Paragraph additionalClasses={'!text-emerald-500 !font-main'} paragraphText={props.widgetText} />           
+                <Paragraph additionalClasses={'!text-green-500 !font-main'} paragraphText={props.widgetText} />           
             </div>
 
-            <div className="w-full grid grid-cols-2">
-                <MainButton buttonText={""} additionalClasses={'!bg-lime-500 hover:!bg-lime-700 !rounded-none flex items-center justify-center !text-zinc-800 hover:!text-white'} textIcon={<FaSquareCheck/>} onclick={props.confirmClick}/>   
+            <div className="w-full grid grid-cols-2 rounded-b-lg overflow-hidden ">
+                <MainButton buttonText={""} additionalClasses={'!bg-green-400 hover:!bg-green-700 active:!bg-green-800 !rounded-none flex items-center justify-center !text-zinc-800 hover:!text-white'} textIcon={<FaSquareCheck/>} onclick={props.confirmClick}/>   
                 <MainButton buttonText={""} additionalClasses={'!bg-red-600 hover:!bg-red-700 !rounded-none flex items-center justify-center'} textIcon={<FaRectangleXmark/>} onclick={props.closeClick}/>            
             </div>
         </div>

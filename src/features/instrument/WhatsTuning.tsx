@@ -4,9 +4,7 @@ import { useEffect, useState } from "react"
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks"
 import { setInstrument } from "./instrumentSlice"
 
-import Paragraph from "../../components/paragraph/Paragraph"
 import H1 from "../../components/headers/H1"
-import H2 from "../../components/headers/H2"
 import H3 from "../../components/headers/H3"
 import H4 from "../../components/headers/H4"
 import ConfirmationPopup from "../../components/widgets/ConfirmationPopup"
@@ -20,7 +18,6 @@ const WhatsTuning = () => {
 
   const [isModuleActive, setIsModuleActive] = useState<boolean>(false);
 
-  const instrumentState = useAppSelector(state=>state.instrument)
   const dispatch = useAppDispatch();
 
   const handleClick = (item:InstrumentType) => {
@@ -60,11 +57,11 @@ const WhatsTuning = () => {
         <H1 additionalClasses={'!text-white'} headerText={`Please Select an Instrument`} textIcon={undefined}/>
       </div>
       
-      <div className="w-full mx-auto md:w-11/12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mt-8 px-8 md:px-10 lg:px-16">
+      <div className="w-full mx-auto md:w-10/12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mt-4 px-4 md:px-10 lg:px-16">
         {tuningSelection?.map((item)=>(
           <div onClick={()=>{handleClick(item)}} id={item.id} key={item.key} className="cursor-pointer w-full col bg-zinc-800 rounded-xl  flex items-center justify-start flex-col border-2 bg-opacity-70 border-zinc-900 hover:border-white  active:border-emerald-300 relative z-0 overflow-hidden group">
               <div className="w-full h-2/3 flex items-center justify-center p-4">
-                <div className="min-h-[33%] w-28 h-28 md:w-32 md:h-32 lg:w-40 lg:h-40  rounded-full bg-cover bg-center border-2 border-zinc-900 group-hover:border-white group-hover:bg-[auto_200%]"
+                <div className="min-h-[33%] w-28 h-28 md:w-32 md:h-32 lg:w-40 lg:h-40  rounded-full bg-cover bg-center border-2 border-zinc-900 group-hover:border-white"
                 style={{
                     backgroundImage:`url(${item.image})`
                   }}
