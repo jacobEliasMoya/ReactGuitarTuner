@@ -14,8 +14,10 @@ const NoteMainDisplay = (props: Props) => {
             <H3 additionalClasses={"z-10 !text-4xl md:!text-5xl !font-secondary !font-bold"} headerText={props.note ? props.note : ''} textIcon={undefined} />
         </div>
 
-        <H3 additionalClasses={'!font-medium !font-secondary'} headerText={props.supportiveText} textIcon={undefined}/>
-        <Paragraph additionalClasses={"!text-red-500"} paragraphText={`${props.hurtz} Hz`} />   
+        <div className="w-full flex items-center justify-center flex-col gap-1 my-1">
+          <H3 additionalClasses={'!font-medium !font-secondary'} headerText={props.supportiveText} textIcon={undefined}/>
+          <Paragraph additionalClasses={"!text-green-500"} paragraphText={`${props.hurtz} Hz`} />   
+        </div>
     </>
   )
 }

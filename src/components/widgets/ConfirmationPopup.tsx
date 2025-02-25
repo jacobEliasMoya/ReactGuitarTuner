@@ -13,7 +13,7 @@ type Props = {
 const ConfirmationPopup = (props: Props) => {
   return (
     <div className={`w-full h-full fixed left-0 ${props.moduleBool ? 'opacity-1 top-[0vh]' : 'opacity-0 top-[100vh]'} z-20 flex items-center justify-center bg-black bg-opacity-85 `}>
-        <div className=" w-2/3 md:w-96 min-h-10 flex flex-col rounded-xl  bg-white border-2 border-zinc-950 hover:border-white">
+        <div className=" w-2/3 md:w-96 min-h-10 flex flex-col rounded-xl  bg-white ">
             <div className="w-full flex items-center justify-center p-4 font-main text-xl bg-red-500 rounded-t-lg">
                 <Paragraph additionalClasses={'!text-white'} paragraphText={"Attention: "}/>
             </div>
