@@ -26,7 +26,7 @@ function App() {
   },[instrumentState])
 
   return (
-      <main className='min-h-screen flex flex-col items-center justify-start  bg-auto bg-repeat bg-red-500'>
+      <main className='min-h-dvh flex flex-col items-center justify-start  bg-auto bg-repeat bg-red-500'>
         <Routes>
           <Route path="/" element={<AppStart onclick={initializeApp} additionalClasses={undefined} />} />
           <Route path="/instrument-selection" element={<WhatsTuning/>} />

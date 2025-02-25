@@ -118,7 +118,7 @@ const TunerArea = () => {
   },[])
 
   return (
-    <section className='w-full min-h-screen text-white pt-0 text-center relative flex items-start justify-center flex-col'>
+    <section className='w-full min-h-dvh text-white pt-0 text-center relative flex items-start justify-center flex-col'>
 
       <div className="w-full fixed top-0 py-4 md:py-10 z-10  border-b-2  border-zinc-900 after:absolute after:w-full after:h-full after:bg-white after:bg-opacity-0 after:backdrop-blur-md  after:-z-[2] bg-opacity-70 bg-zinc-800 overflow-hidden after:left-0 after:!top-0">
         <H2 additionalClasses={'!text-white'} headerText={`Lets Your ${instrumentState ? instrumentState.description.replace('-', ' ') + " " + instrumentState.title : null} Tuned`} textIcon={undefined}/>
