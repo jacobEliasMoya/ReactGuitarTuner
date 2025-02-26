@@ -22,13 +22,7 @@ const TunerArea = () => {
   }
 
   const [pitchHurtz, setPitchHurtz] = useState<number|null>(null)
-  const [tuningInfo, setTuningInfo] = useState<TuningInterface>({
-    almostTuned: '',
-    currentNote: '',
-    hurtzDiffernce: null,
-    nearTuned:false,
-    inTune:false,
-  });
+  const [tuningInfo, setTuningInfo] = useState<TuningInterface>(initialTuning);
 
   const audioContextRef = useRef<AudioContext | null>(null);
   const audioAnalyserRef = useRef<AnalyserNode | null>(null);
