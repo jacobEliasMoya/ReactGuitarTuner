@@ -13,68 +13,65 @@ import { TuningInterface } from "../../types/tuningInterface"
 const TunerArea = () => {
 
   const instrumentState = useAppSelector(state=>state.instrument); // my global state
+  const initialTuning:TuningInterface = {
+    almostTuned: '',
+    currentNote: '',
+    hurtzDiffernce: null,
+    nearTuned:false,
+    inTune:false,
+  }
 
   const [pitchHurtz, setPitchHurtz] = useState<number|null>(null)
   const [tuningInfo, setTuningInfo] = useState<TuningInterface>({
     almostTuned: '',
     currentNote: '',
-    hurtzDiffernce: null
+    hurtzDiffernce: null,
+    nearTuned:false,
+    inTune:false,
   });
 
   const audioContextRef = useRef<AudioContext | null>(null);
   const audioAnalyserRef = useRef<AnalyserNode | null>(null);
   const dataBuffer = useRef<Float32Array | null> (null);
 
+  const handleTuningInfo = (tuneText:string,s1:string,s2:string,s3:number,p:number,tuningLevel1:boolean,tuningLevel2:boolean) => {
+    setTuningInfo((prev)=>({
+      ...prev,
+        almostTuned: `${tuneText} ${s1}`,
+        currentNote: `${s2}`,
+        hurtzDiffernce: p - s3,
+        nearTuned:tuningLevel1,
+        inTune:tuningLevel2,
+    }))
+  }
+
+  const revertTuningInfo = () => {
+    setTuningInfo((prev)=>({
+      ...prev,
+      ...initialTuning
+    }))
+  }
+
   // ai taught me when it comes to music / audio streams classic for loops are the key ... lol me going straing to foreachs
   const approximateNote = (pitch:number) =>{
 
-    const offset:number = 25;
-
-    
     instrumentState.standardTuning.forEach((item)=>{
-      if (pitch + offset > item.frequency &&   pitch - offset < item.frequency) {
-        setTuningInfo((prev)=>({
-          ...prev,
-            almostTuned: `looks like your trying to tune ${item.note}`,
-            currentNote: `${item.note}`,
-            hurtzDiffernce: pitch- item.frequency
-        }))
-
-        if (pitch + offset - 5 > item.frequency &&   pitch - offset - 5 < item.frequency) {
-          setTuningInfo((prev)=>({
-            ...prev,
-              almostTuned: `Getting Closer to ${item.note}`,
-              currentNote: `${item.note}`,
-              hurtzDiffernce: pitch- item.frequency
-          }))
-
-          if (pitch + offset - 15 > item.frequency &&   pitch - offset - 15 < item.frequency) {
-            setTuningInfo((prev)=>({
-              ...prev,
-                almostTuned: `Super Close to ${item.note}`,
-                currentNote: `${item.note}`,
-                hurtzDiffernce: pitch- item.frequency
-            }))
-            
-            if (pitch + offset - 21 > item.frequency &&   pitch - offset - 21 < item.frequency) {
-              setTuningInfo((prev)=>({
-                ...prev,
-                  almostTuned: `Just a Hair off ${item.note}`,
-                  currentNote: `${item.note}`,
-                  hurtzDiffernce: pitch- item.frequency
-              }))
-
-              if (pitch + offset - 24 > item.frequency &&   pitch - offset - 24 < item.frequency) {
-                setTuningInfo((prev)=>({
-                  ...prev,
-                    almostTuned: `Pitch Perfect ${item.note} \n `,
-                    currentNote: `${item.note}`,
-                    hurtzDiffernce: pitch- item.frequency
-                }))
+      if ( pitch > item.frequency - 25 && pitch  < item.frequency + 25 ) {
+        handleTuningInfo('Trying to Tune ',item.note,item.note,item.frequency,pitch,false,false);
+        if ( pitch > item.frequency - 20 && pitch  < item.frequency + 25 ) {
+          handleTuningInfo('Getting Closer to ',item.note,item.note,item.frequency,pitch,false,false);
+          if ( pitch > item.frequency - 15 && pitch  < item.frequency + 25 ) {
+            handleTuningInfo('Super Close to ',item.note,item.note,item.frequency,pitch,true,false);
+            if ( pitch > item.frequency - 5 && pitch  < item.frequency + 5 ) {
+              handleTuningInfo('Just a Hair off ',item.note,item.note,item.frequency,pitch,true,false);
+              if ( pitch > item.frequency - 1 && pitch  < item.frequency + 1 ) {
+                handleTuningInfo('Pitch Perfect ',item.note,item.note,item.frequency,pitch,false,true);
               }
             }
           }
         }
+      }  else {
+        revertTuningInfo();
       }
     })
   }
@@ -146,7 +143,7 @@ const TunerArea = () => {
       <div className="w-full flex flex-col items-end justify-center px-8">
         <div className="w-full mx-auto md:w-11/12 flex items-center justify-center flex-col gap-2  px-8 md:px-10 lg:px-16  ">
           
-          <NoteDisplay note={tuningInfo? tuningInfo.currentNote : ''} supportiveText={tuningInfo.almostTuned ? tuningInfo.almostTuned : "get plucking"} hurtz={pitchHurtz ? pitchHurtz.toFixed(2) : '0'}/>
+          <NoteDisplay note={tuningInfo ? tuningInfo.currentNote : ''} supportiveText={tuningInfo.almostTuned ? tuningInfo.almostTuned : "get plucking"} hurtz={pitchHurtz ? pitchHurtz.toFixed(2) : '0'} almostTuned={tuningInfo.nearTuned} inTune={tuningInfo.inTune}/>
           <CalibrationDisplay calibrationNeedle={tuningInfo.hurtzDiffernce ? tuningInfo.hurtzDiffernce : 0}/>
 
         </div>
