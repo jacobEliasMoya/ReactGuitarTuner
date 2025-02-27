@@ -4,4 +4,5 @@ export interface TuningInterface {
     hurtzDiffernce: number | null;
     nearTuned:boolean,
     inTune:boolean,
+    currentPitch:number
 }
